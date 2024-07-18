@@ -1,0 +1,12 @@
+{
+  "name": "k3s",
+  "sdk": "typescript",
+  "dependencies": [
+    {
+      "name": "kubeconform",
+      "source": "github.com/Smana/daggerverse/kubeconform@208dcbfedb1ee548c342634fb07621038906cbdb"
+    }
+  ],
+  "source": "dagger",
+  "engineVersion": "v0.12.0"
+}
