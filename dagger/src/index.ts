@@ -67,4 +67,22 @@ class K3S {
       .directory("/src")
       .dockerBuild();
   }
+
+  @func()
+  buildGron(goos: string, goarch: string): Container {
+    let repoSrc = dag
+      .git("https://github.com/tomnomnom/gron", { keepGitDir: true })
+      .head()
+      .tree();
+
+    return dag
+      .container()
+      .from("golang:1.21-bullseye")
+      .withMountedDirectory("/go/src/github.com/tomnomnom/gron", repoSrc)
+      .withWorkdir("/go/src/github.com/tomnomnom/gron")
+      .withEnvVariable("CGO_ENABLED", "0")
+      .withEnvVariable("GOOS", goos)
+      .withEnvVariable("GOARCH", goarch)
+      .withExec(["go", "build", "-o", "/usr/local/bin/gron"]);
+  }
 }
