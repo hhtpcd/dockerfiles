@@ -29,7 +29,7 @@ class K3S {
 
     return dag
       .container()
-      .from("golang:1.21-bullseye")
+      .from("golang:1.22.11-bullseye")
       .withMountedDirectory("/go/src/github.com/docker/cli", repoSrc)
       .withWorkdir("/go/src/github.com/docker/cli")
       .withEnvVariable("DISABLE_WARN_OUTSIDE_CONTAINER", "1")
@@ -48,7 +48,7 @@ class K3S {
 
     return dag
       .container()
-      .from("golang:1.21-bullseye")
+      .from("golang:1.23-bullseye")
       .withMountedDirectory("/go/src/github.com/docker/buildx", repoSrc)
       .withWorkdir("/go/src/github.com/docker/buildx")
       .withEnvVariable("DISABLE_WARN_OUTSIDE_CONTAINER", "1")
